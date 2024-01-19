@@ -1,20 +1,26 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from "@angular/material/input"
+import { MatInputModule } from "@angular/material/input";
 import { UserService } from '../../services/user.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule],
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatSnackBarModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private _userService: UserService) {
+  constructor(
+    private fb: FormBuilder, 
+    private _userService: UserService,
+    private snackBar: MatSnackBar
+  ) {
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -36,12 +42,14 @@ export class SignupComponent {
     }
     console.log(user)
 
-    this._userService.addUser(user).subscribe((data) => {
-      console.log(data);
-      alert("User resgistered successfully");
-    }, (error) => {
-      console.log(error);
-      alert("ERROR");
+    this._userService.addUser(user).subscribe(() => {
+      Swal.fire("New User!", "User registered successfully in the System", "success");
+    }, () => {
+      this.snackBar.open("SYSTEM ERROR. Something is wrong...", "Accept", {
+        duration: 4000,
+        verticalPosition: "top",
+        horizontalPosition: "right"
+      });
     });
   }
 }

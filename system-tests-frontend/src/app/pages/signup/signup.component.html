@@ -15,19 +15,20 @@
                         <mat-hint>Username must be unique</mat-hint>
                     </mat-form-field>
 
-                    <mat-form-field class="w-100" appearance="outline">
+                    <mat-form-field class="w-100 mb-1" appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input formControlName="password" type="password" matInput placeholder="Enter your password">
+                        <input formControlName="password" type="password" minlength="8" maxlength="40" matInput placeholder="Enter your password">
+                        <mat-hint>Password must have 8 characters</mat-hint>
                     </mat-form-field>
 
                     <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Name</mat-label>
-                        <input formControlName="name" matInput placeholder="Enter your name">
+                        <input formControlName="name" maxlength="45" matInput placeholder="Enter your name">
                     </mat-form-field>
 
                     <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Last Name</mat-label>
-                        <input formControlName="lastName" matInput placeholder="Enter your last name">
+                        <input formControlName="lastName" maxlength="45" matInput placeholder="Enter your last name">
                     </mat-form-field>
 
                     <mat-form-field class="w-100" appearance="outline">
@@ -42,7 +43,7 @@
 
                     <div class="container text-center">
                         <button type="submit" [disabled]="form.invalid" class="btn btn-outline-success">OK</button>
-                        <button type="button" class="ml-4 btn btn-outline-info">Clean</button>
+                        <button type="reset" class="ml-4 btn btn-outline-info">Clean</button>
                     </div>
                 </form>
             </div>

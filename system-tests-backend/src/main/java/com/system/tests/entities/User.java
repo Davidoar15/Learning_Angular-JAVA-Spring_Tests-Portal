@@ -3,6 +3,8 @@ package com.system.tests.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -37,6 +39,7 @@ public class User {
     private Boolean enable = true; //Make Tests
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    @JsonIgnore
     private Set<UserRol> userRoles = new HashSet<>();
 
     public User() {

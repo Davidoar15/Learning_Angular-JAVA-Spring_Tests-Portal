@@ -8,44 +8,43 @@
 
                 <h1 class="text-center">Sign Up!</h1>
 
-                <form action="">
-                    <mat-form-field class="w-100" appearance="outline">
+                <form [formGroup]="form" (ngSubmit)="formSubmit()">
+                    <mat-form-field class="w-100 mb-1" appearance="outline">
                         <mat-label>Username</mat-label>
-                        <input matInput placeholder="Enter your username">
+                        <input formControlName="username" maxlength="25" matInput placeholder="Enter your username">
+                        <mat-hint>Username must be unique</mat-hint>
                     </mat-form-field>
 
                     <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input type="password" matInput placeholder="Enter your password">
+                        <input formControlName="password" type="password" matInput placeholder="Enter your password">
                     </mat-form-field>
 
                     <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Name</mat-label>
-                        <input matInput placeholder="Enter your name">
+                        <input formControlName="name" matInput placeholder="Enter your name">
                     </mat-form-field>
 
                     <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Last Name</mat-label>
-                        <input matInput placeholder="Enter your last name">
+                        <input formControlName="lastName" matInput placeholder="Enter your last name">
                     </mat-form-field>
 
                     <mat-form-field class="w-100" appearance="outline">
                         <mat-label>E-mail</mat-label>
-                        <input type="email" matInput placeholder="Enter your e-mail">
+                        <input formControlName="email" type="email" matInput placeholder="Enter your e-mail">
                     </mat-form-field>
 
                     <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Cell Phone</mat-label>
-                        <input matInput placeholder="Enter your cell phone number">
+                        <input formControlName="cellPhone" matInput placeholder="Enter your cell phone number">
                     </mat-form-field>
 
                     <div class="container text-center">
-                        <button type="button" class="btn btn-outline-success">OK</button>
+                        <button type="submit" [disabled]="form.invalid" class="btn btn-outline-success">OK</button>
                         <button type="button" class="ml-4 btn btn-outline-info">Clean</button>
                     </div>
                 </form>
-
-                <br><br><br>
             </div>
         </div>
     </div>

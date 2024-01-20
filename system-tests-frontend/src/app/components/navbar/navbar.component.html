@@ -1,1 +1,16 @@
-<p>navbar works!</p>
+<mat-toolbar color="primary">
+    <a routerLink="/" mat-icon-button class="example-icon ml-3" aria-label="Example icon-button with menu icon">
+        <mat-icon class="mt-2" color="accent">menu_books</mat-icon>
+    </a>
+
+    <span class="ml-3">Tests Portal</span>
+    <span class="example-spacer"></span>
+
+    <a routerLink="/login" mat-icon-button class="example-icon favorite-icon text-light text-decoration-none" aria-label="Example icon-button with heart icon">
+        Log In
+    </a>
+
+    <a routerLink="/signup" mat-icon-button class="example-icon favorite-icon text-light text-decoration-none mr-2 ml-4" aria-label="Example icon-button with heart icon">
+        Sign Up
+    </a>
+</mat-toolbar>
